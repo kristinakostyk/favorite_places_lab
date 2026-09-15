@@ -45,19 +45,16 @@ def places_list(request):
 
 def place_detail(request, place_id):
     places = get_places(request)
-    place = None
 
-    for item in places:
-        if item["id"] == place_id:
-            place = item
-            break
+    for place in places:
+        if place["id"] == place_id:
+            return render(
+                request,
+                "places/place_detail.html",
+                {"place": place},
+            )
 
-    return render(
-        request,
-        "places/place_detail.html",
-        {"place": place},
-    )
-
+    return redirect("home")
 
 def add_place(request):
     if request.method == "POST":
