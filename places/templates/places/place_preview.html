@@ -1,0 +1,35 @@
+{% load static %}
+
+<div class="place-card">
+    <img
+    src="{% static 'places/place.png' %}"
+    alt="Фото місця"
+    class="place-image"
+    >
+    <h2>
+    <a href="{% url 'place_detail' place.id %}">
+        {{ place.name }}
+    </a>
+</h2>
+
+    <p>{{ place.description|truncatewords:7 }}</p>
+
+    <p>Тип: {{ place.place_type }}</p>
+
+    {% if place.location %}
+        <p>Локація: {{ place.location }}</p>
+    {% else %}
+        <p>Локація: Secret place👀</p>
+    {% endif %}
+
+    <p>
+        Рейтинг:
+        {% for star in "12345" %}
+            {% if forloop.counter <= place.rating %}
+                ⭐
+            {% endif %}
+        {% endfor %}
+    </p>
+
+    <p>Дата відгуку: {{ place.created_at }}</p>
+</div>

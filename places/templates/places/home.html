@@ -1,0 +1,26 @@
+{% extends "places/base.html" %}
+
+{% block title %}
+Головна | Favorite Places
+{% endblock %}
+
+{% block content %}
+    <h1>Favorite Places</h1>
+
+    <p>
+        Сайт, який допоможе обрати, куди піти сьогодні.
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">
+            Куди піти сьогодні?
+        </button>
+    </form>
+
+    {% if selected_place %}
+        <h2>Сьогодні тобі варто піти сюди:</h2>
+
+        {% include "places/place_preview.html" with place=selected_place %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "places/base.html" %}
+
+{% block title %}
+{{ place.name }} | Favorite Places
+{% endblock %}
+
+{% block content %}
+    {% if place %}
+        <h1>{{ place.name }}</h1>
+
+        <p>{{ place.description }}</p>
+
+        <p>Тип: {{ place.place_type }}</p>
+
+        {% if place.location %}
+            <p>Локація: {{ place.location }}</p>
+        {% else %}
+            <p>Локація: Secret place👀</p>
+        {% endif %}
+
+        <p>
+            Рейтинг:
+            {% for star in "12345" %}
+                {% if forloop.counter <= place.rating %}
+                    ⭐
+                {% endif %}
+            {% endfor %}
+        </p>
+
+        <p>Дата відгуку: {{ place.created_at }}</p>
+
+        <a href="{% url 'places_list' %}">
+            ← Назад до списку
+        </a>
+    {% else %}
+        <h1>Місце не знайдено</h1>
+    {% endif %}
+{% endblock %}

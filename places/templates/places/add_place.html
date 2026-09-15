@@ -1,0 +1,17 @@
+{% extends "places/base.html" %}
+
+{% block title %}
+Додати місце | Favorite Places
+{% endblock %}
+
+{% block content %}
+    <h1>Додати нове місце</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Додати місце</button>
+    </form>
+{% endblock %}
