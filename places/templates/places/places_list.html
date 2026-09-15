@@ -1,0 +1,13 @@
+{% extends "places/base.html" %}
+
+{% block title %}
+Мої місця | Favorite Places
+{% endblock %}
+
+{% block content %}
+    <h1>Мої улюблені місця</h1>
+
+    {% for place in places %}
+        {% include "places/place_preview.html" %}
+    {% endfor %}
+{% endblock %}

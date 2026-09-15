@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Favorite Places{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'places/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <h2>Favorite Places</h2>
+
+        <nav>
+            <a href="{% url 'home' %}">Головна</a>
+            <a href="{% url 'places_list' %}">Мої місця</a>
+            <a href="{% url 'add_place' %}">Додати місце</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>Сайт створений у 2026 році Крістіною Костик.</p>
+    </footer>
+</body>
+</html>
